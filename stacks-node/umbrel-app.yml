@@ -1,16 +1,15 @@
 manifestVersion: 1
-id: sparkles-hello-world
-name: Hello World
-tagline: Replace this tagline with your app's tagline
+id: stacks-blockchain-node
+name: Stacks Blockchain Node
+tagline: Unleash Bitcoin's full potential
 icon: https://raw.githubusercontent.com/hirosystems/explorer/main/public/stx-square.svg
 category: Development
-version: "1.0.0"
+version: "2.05.0.5.1"
 port: 4000
 description: >-
-  Add your app's description here.
-
-
-  You can also add newlines!
+  Stacks enables DeFi, NFTs, apps, and smart contracts for Bitcoin.
+  
+  Stacks connects to Bitcoin, enabling you to build apps, smart contracts, and digital assets that are integrated with Bitcoin's security, capital, and network.
 
 developer: Umbrel
 website: https://umbrel.com
