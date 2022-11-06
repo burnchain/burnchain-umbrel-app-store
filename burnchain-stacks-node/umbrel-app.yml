@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: stacks-blockchain-node
+id: burnchain-stacks-node
 name: Stacks Blockchain Node
 tagline: Unleash Bitcoin's full potential
 icon: https://raw.githubusercontent.com/hirosystems/explorer/main/public/stx-square.svg
