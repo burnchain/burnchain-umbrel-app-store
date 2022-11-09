@@ -3,26 +3,26 @@ id: burnchain-stacks-node
 name: Stacks Blockchain Node
 tagline: Unleash Bitcoin's full potential
 icon: https://raw.githubusercontent.com/hirosystems/explorer/main/public/stx-square.svg
-category: Development
+category: Blockchain
 version: "2.05.0.5.1"
-port: 4000
+port: 3999
 description: >-
   Stacks enables DeFi, NFTs, apps, and smart contracts for Bitcoin.
   
   Stacks connects to Bitcoin, enabling you to build apps, smart contracts, and digital assets that are integrated with Bitcoin's security, capital, and network.
 
-developer: Umbrel
-website: https://umbrel.com
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+developer: Burnchain
+website: https://burnchain.io
+submitter: Burnchain
+submission: https://github.com/burnchain/burnchain-umbrel-app-store/tree/master/burnchain-stacks-node
+repo: https://github.com/burnchain/burnchain-umbrel-app-store/tree/master/burnchain-stacks-node
+support: https://github.com/burnchain/burnchain-umbrel-app-store/issues
 gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
-  - https://i.imgur.com/yyVG0Jb.jpeg
+  - https://raw.githubusercontent.com/burnchain/burnchain-images/main/Screen%20Shot%202022-11-09%20at%201.00.02%20AM.png
+  - https://raw.githubusercontent.com/burnchain/burnchain-images/main/Screen%20Shot%202022-11-09%20at%201.00.55%20AM.png
+  - https://raw.githubusercontent.com/burnchain/burnchain-images/main/Screen%20Shot%202022-11-09%20at%201.04.02%20AM.png
 releaseNotes: >-
-  Add what's new in the latest version of your app here.
+  TBD.
 dependencies: []
 path: ""
 defaultUsername: ""
