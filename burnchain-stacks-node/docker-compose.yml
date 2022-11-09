@@ -4,11 +4,72 @@ services:
 
   app_proxy:
     environment:
-      # The format here is: <app-id>_<docker-service-name>_1
-      APP_HOST: burnchain-stacks-node_server_1
-      APP_PORT: 4000
+      APP_HOST: $APP_STACKS_API_IP
+      APP_PORT: $APP_STACKS_API_PORT
+      PROXY_AUTH_ADD: "false"
     
-  server:
-    image: getumbrel/community-app-store-hello-world:latest
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
     user: "1000:1000"
     init: true
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${SCRIPTPATH}/persistent-data/mainnet/postgres:/var/lib/postgresql/data
+    env_file:
+      - ${SCRIPTPATH}/.env
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      default:
+        ipv4_address: $APP_STACKS_PG_IP
+  stacks-blockchain:
+    image: blockstack/stacks-blockchain:2.05.0.5.1
+    container_name: stacks-blockchain
+    user: "1000:1000"
+    init: true
+    restart: on-failure
+    stop_grace_period: 10m
+    volumes:
+      - ${SCRIPTPATH}/conf/mainnet:/src/stacks-blockchain
+      - ${SCRIPTPATH}/persistent-data/mainnet/stacks-blockchain:/root/stacks-blockchain/data
+    ports:
+      - 20443:20443
+      - 20444:20444
+    env_file:
+      - ${SCRIPTPATH}/.env
+    networks:
+      default:
+        ipv4_address: $APP_STACKS_BC_IP
+    depends_on:
+      - stacks-blockchain-api
+    command:
+      [
+        "/bin/stacks-node",
+        "start",
+        "--config",
+        "/src/stacks-blockchain/Config.toml",
+      ]
+  stacks-blockchain-api:
+    image: hirosystems/stacks-blockchain-api:6.1.1
+    container_name: stacks-blockchain-api
+    user: "1000:1000"
+    init: true
+    restart: always
+    stop_grace_period: 1m
+    environment:
+      - STACKS_CHAIN_ID=${STACKS_CHAIN_ID}
+    volumes:
+      - ${SCRIPTPATH}/persistent-data/bns-data:/bns-data
+      - ${SCRIPTPATH}/persistent-data/mainnet/event-replay:/tmp/event-replay
+    ports:
+      - 3999:3999
+    env_file:
+      - ${SCRIPTPATH}/.env
+    networks:
+      default:
+        ipv4_address: $APP_STACKS_API_IP
+    depends_on:
+      - postgres
+    command: ["npm", "run", "start"]
