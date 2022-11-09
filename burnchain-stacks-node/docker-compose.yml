@@ -13,7 +13,7 @@ services:
     container_name: postgres
     user: "1000:1000"
     init: true
-    restart: "no"
+    restart: on-failure
     stop_grace_period: 1m
     volumes:
       - ${SCRIPTPATH}/persistent-data/mainnet/postgres:/var/lib/postgresql/data
@@ -29,7 +29,7 @@ services:
     container_name: stacks-blockchain
     user: "1000:1000"
     init: true
-    restart: "no"
+    restart: on-failure
     stop_grace_period: 10m
     volumes:
       - ${SCRIPTPATH}/conf/mainnet:/src/stacks-blockchain
@@ -56,7 +56,7 @@ services:
     container_name: stacks-blockchain-api
     user: "1000:1000"
     init: true
-    restart: "no"
+    restart: always
     stop_grace_period: 1m
     environment:
       - STACKS_CHAIN_ID=${STACKS_CHAIN_ID}
