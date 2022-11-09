@@ -63,8 +63,6 @@ services:
     volumes:
       - ${SCRIPTPATH}/persistent-data/bns-data:/bns-data
       - ${SCRIPTPATH}/persistent-data/mainnet/event-replay:/tmp/event-replay
-    ports:
-      - 3999:3999
     env_file:
       - ${SCRIPTPATH}/.env
     networks:
